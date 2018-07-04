@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.easyresearch.ui.BottomControlPanel
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_alignParentBottom="true"
+    android:gravity="center_vertical">
+    <com.example.easyresearch.ui.ImageText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_hall_btn">
+        <include layout="@layout/image_text_layout"/>
+    </com.example.easyresearch.ui.ImageText>
+    <com.example.easyresearch.ui.ImageText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_project_btn"
+        android:layout_toRightOf="@id/bottom_hall_btn">
+        <include layout="@layout/image_text_layout"/>
+    </com.example.easyresearch.ui.ImageText>
+    <com.example.easyresearch.ui.ImageText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_classes_btn"
+        android:layout_toRightOf="@id/bottom_project_btn">
+        <include layout="@layout/image_text_layout"/>
+    </com.example.easyresearch.ui.ImageText>
+
+</com.example.easyresearch.ui.BottomControlPanel>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.easyresearch.ui.HeadControlPanel
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="#e0e6dd">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:ellipsize="marquee"
+        android:gravity="center_horizontal|center"
+        android:text="标题"
+        android:textColor="#ffffffff"
+        android:textSize="20dp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/backward"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:drawablePadding="6dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:src="@drawable/ic_assessment_black_24dp"
+        android:paddingLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/forward"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:drawablePadding="6dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:text="提交"
+        android:textColor="#ffffffff"
+        android:textSize="18dp" />
+</com.example.easyresearch.ui.HeadControlPanel>
