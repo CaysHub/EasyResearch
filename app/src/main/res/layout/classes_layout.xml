@@ -17,10 +17,20 @@
             layout="@layout/classes_items"/>
     </HorizontalScrollView>-->
     <include layout="@layout/line_all"/>
-    <LinearLayout
+    <in.srain.cube.views.ptr.PtrFrameLayout
+        android:id="@+id/classes_refresh"
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
         android:layout_height="wrap_content">
-        <include layout="@layout/classes_class_items"/>
-    </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/classes_info_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+        </ScrollView>
+    </in.srain.cube.views.ptr.PtrFrameLayout>
+
 </LinearLayout>

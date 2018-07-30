@@ -1,5 +1,8 @@
 package com.example.easyresearch.constant;
 
+import com.example.easyresearch.entity.Person;
+import com.google.gson.Gson;
+
 /**
  * Created by lenovo on 2018/6/23.
  */
@@ -22,4 +25,12 @@ public class Constant {
     public static final String setting_identify="实名认证";
     public static final String setting_question="我的问题";
     public static final String setting_answer="我的回答";
+    public static final String setting_exit="退出登录";
+
+    //URL
+    public static final String URL="http://5609c632.nat123.cc/";
+    //Gson
+    public static final Gson gson=new Gson();
+    //Person
+    public static Person person=null;
 }

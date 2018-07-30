@@ -72,10 +72,6 @@ public class HeadControlPanel extends RelativeLayout implements View.OnClickList
         if(leftImage!=null){
             Glide.with(getContext())
                     .load(imageId)
-                    .centerCrop()
-                    .dontAnimate()//防止设置placeholder导致第一次不显示网络图片,只显示默认图片的问题
-                    .error(imageId)
-                    .placeholder(imageId)
                     .into(leftImage);
         }
     }

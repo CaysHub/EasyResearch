@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:background="#e0e6dd">
+    android:background="@drawable/login_bg">
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -13,7 +13,6 @@
         android:ellipsize="marquee"
         android:gravity="center_horizontal|center"
         android:text="标题"
-        android:textColor="#ffffffff"
         android:textSize="20dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -36,6 +35,5 @@
         android:gravity="center"
         android:paddingLeft="5dp"
         android:text="提交"
-        android:textColor="#ffffffff"
         android:textSize="18dp" />
 </com.example.easyresearch.ui.HeadControlPanel>

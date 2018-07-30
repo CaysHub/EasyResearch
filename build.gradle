@@ -3,10 +3,16 @@
 buildscript {
     repositories {
         jcenter()
+        google()
+        mavenCentral()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+            //url "https://raw.githubusercontent.com/HyphenateInc/Hyphenate-SDK-Android/master/repository"
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
-
+        classpath 'com.android.tools.build:gradle:3.1.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -15,9 +21,23 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+ext {
+    compileSdkVersion = 26
+    buildToolsVersion = '27.0.3'
+    minSdkVersion = 17
+    targetSdkVersion = 26
+    appTargetSdkVersion = 26
+    versionCode = 1
+    versionName = '1.0'
+    sdkSourceCompatibility = 1.8
+    sdkTargetCompatibility = 1.8
+    appSourceCompatibility = 1.8
+    appTargetCompatibility = 1.8
 }

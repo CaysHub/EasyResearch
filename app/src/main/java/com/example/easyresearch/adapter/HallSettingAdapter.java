@@ -29,10 +29,18 @@ public class HallSettingAdapter extends RecyclerView.Adapter<HallSettingAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         HallSetting setting=mHallSettings.get(position);
         holder.hallSettingImage.setImageResource(setting.getResourceId());
         holder.hallSettingName.setText(setting.getName());
+        if (mListener!=null){
+            holder.hallSettingImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mListener.onItemClick(position);
+                }
+            });
+        }
     }
 
     @Override
@@ -53,5 +61,12 @@ public class HallSettingAdapter extends RecyclerView.Adapter<HallSettingAdapter.
     public HallSettingAdapter(List<HallSetting> hallSettings){
         this.mHallSettings=hallSettings;
     }
-
+    //定义接口实现点击事件
+    public interface ItemClickListener{
+        public void onItemClick(int position);
+    }
+    public ItemClickListener mListener;
+    public void setOnItemClickListener(ItemClickListener listener){
+        this.mListener=listener;
+    }
 }

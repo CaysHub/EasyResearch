@@ -16,14 +16,6 @@
             android:layout_marginStart="13dp"
             android:layout_marginTop="11dp"
             android:id="@+id/my_setting_back" />
-        <ImageView
-            android:id="@+id/my_setting_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_setting"
-            android:layout_marginEnd="19dp"
-            android:layout_alignTop="@+id/my_setting_back"
-            android:layout_alignParentEnd="true" />
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="70dp"
             android:layout_height="70dp"

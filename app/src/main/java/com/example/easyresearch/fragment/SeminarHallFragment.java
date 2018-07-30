@@ -1,5 +1,6 @@
 package com.example.easyresearch.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.example.easyresearch.MainActivity;
 import com.example.easyresearch.R;
+import com.example.easyresearch.activity.AskDanielActivity;
+import com.example.easyresearch.activity.QuestionActivity;
 import com.example.easyresearch.adapter.HallSettingAdapter;
 import com.example.easyresearch.constant.Constant;
 import com.example.easyresearch.entity.HallSetting;
@@ -21,7 +24,7 @@ import java.util.List;
  * Created by lenovo on 2018/6/23.
  */
 
-public class SeminarHallFragment extends BaseFragment{
+public class SeminarHallFragment extends BaseFragment implements View.OnClickListener,HallSettingAdapter.ItemClickListener{
     private View view;
     private List<HallSetting> hallSettings=new ArrayList<>();
     @Override
@@ -36,6 +39,7 @@ public class SeminarHallFragment extends BaseFragment{
         recyclerView.setLayoutManager(layoutManager);
         HallSettingAdapter adapter=new HallSettingAdapter(hallSettings);
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(this);
         return view;
     }
     private void intiHallSetting(){
@@ -48,11 +52,27 @@ public class SeminarHallFragment extends BaseFragment{
         hallSettings.add(hallSetting3);
         /*HallSetting hallSetting4=new HallSetting("科研资讯",R.drawable.c2);
         hallSettings.add(hallSetting4);*/
-
     }
     @Override
     public void onResume() {
         super.onResume();
         MainActivity.currTag= Constant.fragment_seminar_hall;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        switch (position){
+            case 0:Intent intent1=new Intent(getActivity(), AskDanielActivity.class);
+                startActivity(intent1);break;
+            case 1: Intent intent=new Intent(getActivity(), QuestionActivity.class);
+                startActivity(intent);break;
+            default:break;
+        }
+
     }
 }

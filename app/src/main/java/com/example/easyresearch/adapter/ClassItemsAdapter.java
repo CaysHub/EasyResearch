@@ -30,10 +30,18 @@ public class ClassItemsAdapter extends RecyclerView.Adapter<ClassItemsAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         ClassItems classItems=mClassItemses.get(position);
         holder.hallSettingImage.setImageResource(classItems.getResourceId());
         holder.hallSettingName.setText(classItems.getName());
+        if (mListener!=null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mListener.classItemClick(position);
+                }
+            });
+        }
     }
 
     @Override
@@ -49,6 +57,13 @@ public class ClassItemsAdapter extends RecyclerView.Adapter<ClassItemsAdapter.Vi
             hallSettingImage=(ImageView)itemView.findViewById(R.id.hall_image_image_text);
             hallSettingName=(TextView)itemView.findViewById(R.id.hall_text_image_text);
         }
-
+    }
+    //添加点击事件
+    public interface ClassItemClickListener{
+        public void classItemClick(int position);
+    }
+    public ClassItemClickListener mListener;
+    public void setClassItemClickListener(ClassItemClickListener itemClickListener){
+        this.mListener=itemClickListener;
     }
 }
