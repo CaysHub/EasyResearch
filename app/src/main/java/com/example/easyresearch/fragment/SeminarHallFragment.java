@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.example.easyresearch.MainActivity;
 import com.example.easyresearch.R;
 import com.example.easyresearch.activity.AskDanielActivity;
+import com.example.easyresearch.activity.IMActivity;
 import com.example.easyresearch.activity.QuestionActivity;
 import com.example.easyresearch.adapter.HallSettingAdapter;
 import com.example.easyresearch.constant.Constant;
@@ -67,7 +68,7 @@ public class SeminarHallFragment extends BaseFragment implements View.OnClickLis
     @Override
     public void onItemClick(int position) {
         switch (position){
-            case 0:Intent intent1=new Intent(getActivity(), AskDanielActivity.class);
+            case 0:Intent intent1=new Intent(getActivity(), IMActivity.class);
                 startActivity(intent1);break;
             case 1: Intent intent=new Intent(getActivity(), QuestionActivity.class);
                 startActivity(intent);break;

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.IMActivity">
@@ -9,4 +10,30 @@
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="30dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/im_register"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_shap"
+            android:text="注册环信"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/im_login"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_shap"
+            android:text="登录"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/im_logout"
+            android:text="退出登录"
+            android:background="@drawable/btn_shap"/>
+    </LinearLayout>
 </LinearLayout>
