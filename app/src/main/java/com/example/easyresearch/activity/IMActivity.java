@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.easyresearch.R;
@@ -24,22 +25,31 @@ import java.util.Iterator;
 import java.util.List;
 
 public class IMActivity extends AppCompatActivity implements View.OnClickListener{
-    private String username="1",pwd="1";
+    private String username="12",pwd="12";
     private Button registerBtn,loginBtn;
+    private TextView test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_im);
         MultiDex.install(this);
-        if (getSupportActionBar()!=null){getSupportActionBar().hide();}
-        imOptions ();
+        if (getSupportActionBar()!=null){getSupportActionBar().setDisplayHomeAsUpEnabled (true);}
+        EMOptions options=imOptions ();
+        EMClient.getInstance().init(getApplicationContext(), options);
+        //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
+        EMClient.getInstance().setDebugMode(true);
+        //注册一个监听连接状态的listener
+        EMClient.getInstance().addConnectionListener(new MyConnectionListener());
         registerBtn=(Button)findViewById (R.id.im_register);
         loginBtn=(Button)findViewById (R.id.im_login);
+        test=(TextView)findViewById (R.id.im_test);
+        registerBtn.setOnClickListener (this);
+        loginBtn.setOnClickListener (this);
         ((Button)findViewById (R.id.im_logout)).setOnClickListener (this);
         //registerIM(username,pwd);
     }
     //环信sdk初始化
-    private void imOptions(){
+    private EMOptions imOptions(){
         EMOptions options = new EMOptions();
         // 默认添加好友时，是不需要验证的，改成需要验证
         options.setAcceptInvitationAlways(false);
@@ -47,10 +57,11 @@ public class IMActivity extends AppCompatActivity implements View.OnClickListene
         options.setAutoTransferMessageAttachments(true);
         // 是否自动下载附件类消息的缩略图等，默认为 true 这里和上边这个参数相关联
         options.setAutoDownloadThumbnail(true);
+        return options;
         //初始化
-        Context appContext = this;
-        int pid = android.os.Process.myPid();
-        String processAppName = getAppName (pid);
+        //Context appContext = this;
+        //int pid = android.os.Process.myPid();
+        //String processAppName = getAppName (pid);
         // 如果APP启用了远程的service，此application:onCreate会被调用2次
         // 为了防止环信SDK被初始化2次，加此判断会保证SDK被初始化1次
         // 默认的APP会在以包名为默认的process name下运行，如果查到的process name不是APP的process name就立即返回
@@ -59,11 +70,6 @@ public class IMActivity extends AppCompatActivity implements View.OnClickListene
             // 则此application::onCreate 是被service 调用的，直接返回
             return;
         }*/
-        EMClient.getInstance().init(getApplicationContext (), options);
-        //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
-        EMClient.getInstance().setDebugMode(true);
-        //注册一个监听连接状态的listener
-        EMClient.getInstance().addConnectionListener(new MyConnectionListener());
     }
     //获取app名称
     private String getAppName(int pID) {
@@ -86,52 +92,71 @@ public class IMActivity extends AppCompatActivity implements View.OnClickListene
         return processName;
     }
     //注册环信账号
-    private void registerIM(String username,String pwd){
+    private void registerIM(final String username,final String pwd){
+        test.append ("\n注册函数\n");
         //注册失败会抛出HyphenateException
-        try {
-            EMClient.getInstance ().createAccount (username, pwd);//同步方法
-        }catch (HyphenateException e){
-            Toast.makeText (this,"注册失败！",Toast.LENGTH_LONG).show ();
-            return;
-        }
-        Toast.makeText (this,"注册成功！",Toast.LENGTH_LONG).show ();
+        new Thread (new Runnable () {
+            @Override
+            public void run() {
+                try {
+                    if (username.isEmpty ()||pwd.isEmpty ())return;
+                    //Log.d ("IMActivity", "run: 1");
+                    EMClient.getInstance ().createAccount (username, pwd);//同步方法
+                    //Log.d ("IMActivity", "run: 2");
+                }catch (HyphenateException e){
+                    e.printStackTrace ();
+                    //Log.d ("IMActivity", "run: 3");
+                    //makeText ("注册失败！");
+                }
+                //Log.d ("IMActivity", "run: 4");
+                //makeText ("注册成功！");
+            }
+        }).start ();
+
     }
     //登录
-    private void loginIM(String name,String password){
-        EMClient.getInstance ().login (name, password, new EMCallBack () {
+    private void loginIM(final String name,final String password){
+        new Thread (new Runnable () {
             @Override
-            public void onSuccess() {
-                EMClient.getInstance().groupManager().loadAllGroups();
-                EMClient.getInstance().chatManager().loadAllConversations();
-                Toast.makeText (getApplicationContext (),"登录成功！",Toast.LENGTH_LONG).show();
-            }
+            public void run() {
+                EMClient.getInstance ().login (name, password, new EMCallBack () {
+                    @Override
+                    public void onSuccess() {
+                        EMClient.getInstance().groupManager().loadAllGroups();
+                        EMClient.getInstance().chatManager().loadAllConversations();
+                        makeText ("登录成功");
+                    }
 
-            @Override
-            public void onError(int i, String s) {
-                Toast.makeText (getApplicationContext (),"登录失败",Toast.LENGTH_LONG).show();
-            }
+                    @Override
+                    public void onError(int i, String s) {
+                        Log.d ("IMActivity", "onError: "+i+"\t"+s);
+                        makeText ("登录失败"+i+s);
+                    }
 
-            @Override
-            public void onProgress(int i, String s) {
-                Toast.makeText (getApplicationContext (),"登录失败",Toast.LENGTH_LONG).show();
+                    @Override
+                    public void onProgress(int i, String s) {
+                        makeText ("登录过程中");
+                    }
+                });
             }
-        });
+        }).start ();
+
     }
     //退出环信
     private void logoutIM(String username,String pwd){
         EMClient.getInstance().logout(true, new EMCallBack() {
             @Override
             public void onSuccess() {
-                Toast.makeText (getApplicationContext (),"退出登录成功",Toast.LENGTH_LONG).show();
+                makeText ("退出登录成功");
             }
 
             @Override
             public void onProgress(int progress, String status) {
-                Toast.makeText (getApplicationContext (),"退出登录中",Toast.LENGTH_LONG).show();
+                makeText ("退出登录中");
             }
             @Override
             public void onError(int code, String message) {
-                Toast.makeText (getApplicationContext (),"退出登录失败",Toast.LENGTH_LONG).show();
+                makeText ("退出登录失败");
             }
         });
     }
@@ -139,9 +164,9 @@ public class IMActivity extends AppCompatActivity implements View.OnClickListene
     public void onClick(View view) {
 
         switch (view.getId ()){
-            case R.id.im_register:registerIM (username,pwd);break;
-            case R.id.im_login:loginIM (username,pwd);break;
-            case R.id.im_logout:logoutIM(username,pwd);break;
+            case R.id.im_register:test.append ("注册");registerIM (username,pwd);break;
+            case R.id.im_login:test.append ("登陆");loginIM (username,pwd);break;
+            case R.id.im_logout:test.append ("登出");logoutIM(username,pwd);break;
             default:break;
         }
     }
@@ -177,5 +202,14 @@ public class IMActivity extends AppCompatActivity implements View.OnClickListene
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext (newBase);
         MultiDex.install(this);
+    }
+    private void makeText(final String info){
+        runOnUiThread (new Runnable () {
+            @Override
+            public void run() {
+                //Toast.makeText (getApplicationContext (),info,Toast.LENGTH_LONG).show ();
+                test.append (info);
+            }
+        });
     }
 }
