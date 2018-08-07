@@ -64,7 +64,8 @@
 
         <activity android:name=".activity.IMActivity"></activity>
         <!-- 设置环信应用的AppKey -->
-        <meta-data android:name="EASEMOB_APPKEY"  android:value="1167180730099493＃easyreserch" />
+        <meta-data android:name="EASEMOB_APPKEY"
+            android:value="	1167180730099493＃easyresearch" />
         <!-- 声明SDK所需的service SDK核心功能-->
         <service android:name="com.hyphenate.chat.EMChatService" android:exported="true"/>
         <service android:name="com.hyphenate.chat.EMJobService"
