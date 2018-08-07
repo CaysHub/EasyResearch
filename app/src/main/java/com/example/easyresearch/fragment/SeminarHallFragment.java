@@ -68,7 +68,7 @@ public class SeminarHallFragment extends BaseFragment implements View.OnClickLis
     @Override
     public void onItemClick(int position) {
         switch (position){
-            case 0:Intent intent1=new Intent(getActivity(), IMActivity.class);
+            case 0:Intent intent1=new Intent(getActivity(), AskDanielActivity.class);
                 startActivity(intent1);break;
             case 1: Intent intent=new Intent(getActivity(), QuestionActivity.class);
                 startActivity(intent);break;

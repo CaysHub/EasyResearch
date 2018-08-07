@@ -7,36 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".activity.IMActivity">
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/im_register"
-            android:layout_margin="5dp"
-            android:background="@drawable/btn_shap"
-            android:text="注册环信"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/im_login"
-            android:layout_margin="5dp"
-            android:background="@drawable/btn_shap"
-            android:text="登录"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:id="@+id/im_logout"
-            android:text="退出登录"
-            android:background="@drawable/btn_shap"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/im_test"
-            android:text="测试信息"
-            android:gravity="center"
-            android:textSize="20dp"/>
+            android:id="@+id/im_dialog_test"
+            android:text="对话"/>
     </LinearLayout>
 </LinearLayout>
