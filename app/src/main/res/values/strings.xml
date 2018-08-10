@@ -2,4 +2,5 @@
     <string name="app_name">EasyResearch</string>
     <string name="login_user">用户名</string>
     <string name="title_activity_ask_daniel">AskDanielActivity</string>
+    <string name="hall_question_str">科研论坛</string>
 </resources>

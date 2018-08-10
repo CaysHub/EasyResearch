@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="讲师简介："
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/daniel_instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/daniel_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/c3"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/daniel_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="你好"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/daniel_class"
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/daniel_type"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/daniel_good_rate"/>
+    </LinearLayout>
+</LinearLayout>

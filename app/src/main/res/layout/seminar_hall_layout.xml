@@ -3,17 +3,102 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:orientation="vertical"
+    <in.srain.cube.views.ptr.PtrFrameLayout
+        android:id="@+id/hall_refresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.v7.widget.RecyclerView
+        android:layout_height="match_parent">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/hall_lists">
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/hall_lists">
 
-        </android.support.v7.widget.RecyclerView>
-        <include layout="@layout/line_all"/>
-    </LinearLayout>
+                    </android.support.v7.widget.RecyclerView>
+                    <include layout="@layout/line_all"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/hall_ask_vector"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/c3"/>
+                        <View
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="1dip"
+                            android:layout_height="match_parent"
+                            android:background="#6c6868"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="4"
+                            android:gravity="start|center"
+                            android:layout_height="match_parent"
+                            android:text="问大牛"/>
+                    </LinearLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/hall_daniel_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
+                    </android.support.v7.widget.RecyclerView>
+                </LinearLayout>
+                <include layout="@layout/line_all"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/hall_question_vector"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/c3"/>
+                        <View
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="1dip"
+                            android:layout_height="match_parent"
+                            android:background="#6c6868"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="4"
+                            android:gravity="start|center"
+                            android:layout_height="match_parent"
+                            android:text="@string/hall_question_str"/>
+                    </LinearLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/hall_question_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </android.support.v7.widget.RecyclerView>
+                </LinearLayout>
+                <include layout="@layout/line_all"/>
+            </LinearLayout>
+        </ScrollView>
+    </in.srain.cube.views.ptr.PtrFrameLayout>
 </LinearLayout>

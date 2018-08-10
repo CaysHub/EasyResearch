@@ -107,12 +107,11 @@
                     android:scheme="rong" />
             </intent-filter>
         </activity>
-        <!--会话界面-->
+        <!-- 会话界面 -->
         <activity
             android:name=".rong.ConversationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -124,6 +123,9 @@
                     android:scheme="rong" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.ProjectInfoActivity"
+            android:label=""></activity>
     </application>
 
 </manifest>
